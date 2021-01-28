@@ -1,4 +1,7 @@
-import { IExecuteFunctions } from 'n8n-core';
+import {
+	IExecuteFunctions,
+} from 'n8n-core';
+
 import {
 	IDataObject,
 	INodeExecutionData,
@@ -72,7 +75,9 @@ export class TimescaleDb implements INodeType {
 				},
 				displayOptions: {
 					show: {
-						operation: ['executeQuery'],
+						operation: [
+							'executeQuery',
+						],
 					},
 				},
 				default: '',
@@ -90,7 +95,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['insert'],
+						operation: [
+							'insert',
+						],
 					},
 				},
 				default: 'public',
@@ -103,7 +110,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['insert'],
+						operation: [
+							'insert',
+						],
 					},
 				},
 				default: '',
@@ -116,7 +125,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['insert'],
+						operation: [
+							'insert',
+						],
 					},
 				},
 				default: '',
@@ -130,7 +141,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['insert'],
+						operation: [
+							'insert',
+						],
 					},
 				},
 				default: '*',
@@ -146,7 +159,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['update'],
+						operation: [
+							'update',
+						],
 					},
 				},
 				default: '',
@@ -159,7 +174,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['update'],
+						operation: [
+							'update',
+						],
 					},
 				},
 				default: 'id',
@@ -173,7 +190,9 @@ export class TimescaleDb implements INodeType {
 				type: 'string',
 				displayOptions: {
 					show: {
-						operation: ['update'],
+						operation: [
+							'update',
+						],
 					},
 				},
 				default: '',
@@ -230,7 +249,6 @@ export class TimescaleDb implements INodeType {
 				returnItems.push({
 					json: {
 						...insertData[i],
-						...insertItems[i],
 					},
 				});
 			}
@@ -241,15 +259,15 @@ export class TimescaleDb implements INodeType {
 			const tableName = this.getNodeParameter('table', 0) as string;
 			const updateKey = this.getNodeParameter('updateKey', 0) as string;
 
-			const queries : string[] = [];
-			const updatedKeys : string[] = [];
-			let updateKeyValue : string | number;
-			let columns : string[] = [];
+			const queries: string[] = [];
+			const updatedKeys: string[] = [];
+			let updateKeyValue: string | number;
+			let columns: string[] = [];
 
 			items.map(item => {
-				const setOperations : string[] = [];
+				const setOperations: string[] = [];
 				columns = Object.keys(item.json);
-				columns.map((col : string) => {
+				columns.map((col: string) => {
 					if (col !== updateKey) {
 						if (typeof item.json[col] === 'string') {
 							setOperations.push(`${col} = \'${item.json[col]}\'`);

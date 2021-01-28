@@ -3,10 +3,9 @@ import {
 	NodePropertyTypes,
 } from 'n8n-workflow';
 
-
 export class TimescaleDb implements ICredentialType {
 	name = 'timescaleDb';
-	displayName = 'TimescaleDb';
+	displayName = 'TimescaleDB';
 	documentationUrl = 'timescaleDb';
 	properties = [
 		{
@@ -82,7 +81,7 @@ export class TimescaleDb implements ICredentialType {
 			displayName: 'Port',
 			name: 'port',
 			type: 'number' as NodePropertyTypes,
-			default: 5432,
+			default: 35438,
 		},
 	];
 }

@@ -21,7 +21,7 @@ export class TimescaleDb implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'TimescaleDB',
 		name: 'timescaleDb',
-		icon: 'file:timescale.png',
+		icon: 'file:timescale.svg',
 		group: ['input'],
 		version: 1,
 		description: 'Add and update data in TimescaleDB',

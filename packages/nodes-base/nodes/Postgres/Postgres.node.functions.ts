@@ -83,6 +83,7 @@ export async function pgInsert(
 		pgp.helpers.insert(insertItems, cs, te) +
 		(returnFields.length ? ` RETURNING ${returnFields.join(',')}` : '');
 	// Executing the query to insert the data
+	console.log(query);
 	const insertData = await db.manyOrNone(query);
 
 	return [insertData, insertItems];

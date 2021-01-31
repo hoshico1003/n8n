@@ -81,7 +81,7 @@ export class TimescaleDb implements ICredentialType {
 			displayName: 'Port',
 			name: 'port',
 			type: 'number' as NodePropertyTypes,
-			default: 35438,
+			default: 5432,
 		},
 	];
 }
